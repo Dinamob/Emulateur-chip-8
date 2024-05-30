@@ -8,12 +8,11 @@ CFLAGS = -W -Werror -Wall -Wextra
 NAME = chip8
 
 all: $(OBJ)
-	gcc $(OBJ) -o $(NAME) $(CFLAGS) sdl2-config --cflags --libs
+	gcc $(OBJ) -o $(NAME) $(CFLAGS) -I include `sdl2-config --cflags --libs`
 
 clean:
 	rm -f $(OBJ)
-	find -name "*~" -delete -o -name "*#" -delete -o -name "#*" -delete
-	-o -name "*.o" -delete
+	find -name "*~" -delete -o -name "*#" -delete -o -name "#*" -delete -o -name "*.o" -delete
 
 fclean: clean
 	rm -f $(NAME)
